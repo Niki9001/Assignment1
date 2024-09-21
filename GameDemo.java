@@ -42,13 +42,53 @@ public class GameDemo {
 
         scanner.close();
     }
-    public static void handleCreate(Board board, String input,Scanner scanner){
-        String inputArray[] = input.split(" ");
-        if (inputArray.length < 3){
-            System.out.println("Invalid command");
+    public static void handleCreate(Board board, String input, Scanner scanner) {
+        String[] inputArray = input.split(" ");
+        if (inputArray.length < 3) {
+            System.out.println("Invalid command. Usage: create x y [fast] [flexible]");
             return;
         }
+
+        // 将输入的 x 和 y 转换为整数
+        int x = Integer.parseInt(inputArray[1]);
+        int y = Integer.parseInt(inputArray[2]);
+
+        // 默认棋子的属性
+        boolean isFast = false;
+        boolean isFlexible = false;
+
+        // 检查是否有 "fast" 或 "flexible" 参数
+        for (int i = 3; i < inputArray.length; i++) {
+            if (inputArray[i].equalsIgnoreCase("fast")) {
+                isFast = true;
+            } else if (inputArray[i].equalsIgnoreCase("flexible")) {
+                isFlexible = true;
+            }
+        }
+
+        // 询问用户输入棋子的名称和颜色
+        System.out.println("Enter the name of the piece: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter the color of the piece: ");
+        String color = scanner.nextLine();
+
+        // 创建适当类型的棋子
+        Piece piece;
+        if (isFast && isFlexible) {
+            piece = new FastFlexiblePiece(name, color, new int[]{x, y});
+        } else if (isFast) {
+            piece = new FastPiece(name, color, new int[]{x, y});
+        } else if (isFlexible) {
+            piece = new SlowFlexiblePiece(name, color, new int[]{x, y});
+        } else {
+            piece = new SlowPiece(name, color, new int[]{x, y});
+        }
+
+        // 将棋子放置到棋盘上
+        board.movePiece(piece, new int[]{x, y});
+        System.out.println("Created a " + name + " at position (" + x + "," + y + ")");
     }
+
     //        dealWithInput(board,scanner);
 
 //        scanner.close();

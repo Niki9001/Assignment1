@@ -9,7 +9,16 @@ public class Piece {
         this.name = name;
         this.color = color;
         this.position = position;
-
+    }
+    //Getters
+    public String nameGetter(){
+        return name;
+    }
+    public String colorGetter(){
+        return color;
+    }
+    public int[] positionGetter(){
+        return position;
     }
 
 }

@@ -15,15 +15,29 @@ public class FastPiece extends Piece{
                     position[0] = position[0] - n;
                     setterPosition(position);
                 }
+                else{
+                    System.out.println("out of range");
+                }
                 break;
             case "right":
                 if (position[0] + n <= 6){
                     position[0] = position[0] + n;
                     setterPosition(position);
                 }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
         }
 
+    }
+    @Override
+    public String toString() {
+        int[] position = positionGetter();  // 获取当前位置信息
+        return "Slow Piece: \n" +
+                "Name: " + nameGetter() + "\n" +
+                "Color: " + colorGetter() + "\n" +
+                "Position: [" + position[0] + "], [" + position[1] + "]";  // 格式化坐标输出
     }
 
 }

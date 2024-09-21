@@ -7,12 +7,13 @@ public class main {
         //slowPiece.move("left");
         //System.out.println(slowPiece);
 
-        slowPiece.move("right");
-        System.out.println(slowPiece);
+        //slowPiece.move("right");
+        //System.out.println(slowPiece);
 
 
         FastPiece fastPiece = new FastPiece("someFast","black",position);
+        fastPiece.move("Left",3);
         System.out.println(fastPiece);
-        fastPiece.move("Left",5);
+
     }
 }

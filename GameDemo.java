@@ -10,34 +10,23 @@ public class GameDemo {
             System.out.println("Enter a command (type help for details): ");
             String input = scanner.nextLine().trim().toLowerCase();
 
-            // 判断用户输入的命令
             if (input.equalsIgnoreCase("help")) {
-                // 输出帮助信息
                 System.out.println("Possible commands as follow: \n"
                         + "create location [fast][flexible]: Creates a new piece.\n"
                         + "move location direction [spaces]: Moves a piece.\n"
                         + "print: Displays the board.\n"
                         + "help: Displays help.\n"
-                        + "Exits the program.");
+                        + "exit: Exits the program.");
             } else if (input.equalsIgnoreCase("exit")) {
-                // 退出程序
                 System.out.println("Exiting the game...");
-                break;  // 跳出循环，结束程序
+                break;
             } else if (input.startsWith("create")) {
-                // 处理创建棋子的逻辑
-                System.out.println("Creating a piece...");
-                handleCreate(board,input,scanner);
-                // 这里可以加入具体的逻辑来处理棋子创建
+                handleCreate(board, input, scanner);
             } else if (input.startsWith("move")) {
-                // 处理移动棋子的逻辑
-                System.out.println("Moving a piece...");
                 handleMovement(board, input);
-                // 这里可以加入具体的逻辑来处理棋子移动
             } else if (input.equalsIgnoreCase("print")) {
-                // 打印当前棋盘的状态
                 board.boardShow();
             } else {
-                // 如果用户输入的命令无效
                 System.out.println("Invalid command. Please try again.");
             }
         }
@@ -47,24 +36,19 @@ public class GameDemo {
     public static void handleCreate(Board board, String input, Scanner scanner) {
         String[] inputArray = input.split(" ");
         if (inputArray.length < 3) {
-            System.out.println("Invalid command. Usage: create x y [fast] [flexible]");
+            System.out.println("Invalid command. Usage: create x y [fast|slow]");
             return;
         }
 
-        // 将输入的 x 和 y 转换为整数
         int x = Integer.parseInt(inputArray[1]);
         int y = Integer.parseInt(inputArray[2]);
 
-        // 默认棋子的属性
         boolean isFast = false;
-        boolean isFlexible = false;
 
-        // 检查是否有 "fast" 或 "flexible" 参数
-        for (int i = 3; i < inputArray.length; i++) {
+        // TODO: 检查是否有 "fast" 或 "slow" 参数，希望只有这两个条件，要不然这下面要改
+        for (int i = 3; i < inputArray.length; i = i + 1) {
             if (inputArray[i].equalsIgnoreCase("fast")) {
                 isFast = true;
-            } else if (inputArray[i].equalsIgnoreCase("flexible")) {
-                isFlexible = true;
             }
         }
 
@@ -74,19 +58,13 @@ public class GameDemo {
         System.out.println("Enter the color of the piece: ");
         String color = scanner.nextLine();
 
-        // 创建适当类型的棋子
         Piece piece;
-        if (isFast && isFlexible) {
+        if (isFast) {
             piece = new FastFlexiblePiece(name, color, new int[]{x, y});
-        } else if (isFast) {
-            piece = new FastPiece(name, color, new int[]{x, y});
-        } else if (isFlexible) {
-            piece = new SlowFlexiblePiece(name, color, new int[]{x, y});
         } else {
-            piece = new SlowPiece(name, color, new int[]{x, y});
+            piece = new SlowFlexiblePiece(name, color, new int[]{x, y});
         }
 
-        // 将棋子放置到棋盘上
         board.movePiece(piece, new int[]{x, y});
     }
 
@@ -98,42 +76,51 @@ public class GameDemo {
         }
 
         // 提取棋子的位置和方向
-        int x = Integer.parseInt(inputArray[1]);
-        int y = Integer.parseInt(inputArray[2]);
+        int row = Integer.parseInt(inputArray[1]);
+        int col = Integer.parseInt(inputArray[2]);
         String direction = inputArray[3].toLowerCase();
 
-        // 获取棋子
-        int[] position = {x, y};
+        int[] position = {row, col};  // 当前棋子的坐标
         Piece piece = board.getPieceAtPosition(position);
+
         if (piece == null) {
-            System.out.println("No piece found at position (" + x + "," + y + ")");
+            System.out.println("No piece found at position (" + row + "," + col + ")");
             return;
         }
 
-        // 检查是否为 FastPiece，并处理 spaces 参数
-        if (piece instanceof FastPiece) {
+        // 如果是 FastFlexiblePiece
+        if (piece instanceof FastFlexiblePiece) {
             if (inputArray.length == 5) {
-                try {
-                    int spaces = Integer.parseInt(inputArray[4]);
-                    ((FastPiece) piece).move(direction, spaces);
-                    System.out.println("Moved " + piece.nameGetter() + " " + direction + " by " + spaces + " spaces.");
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid spaces value. It should be a number.");
-                }
+                int spaces = Integer.parseInt(inputArray[4]);
+
+                // 移动前先移除旧位置的棋子
+                board.removePiece(position);
+
+                // 调用 FastFlexiblePiece 的移动方法
+                ((FastFlexiblePiece) piece).move(direction, spaces);
+
+                // 获取更新后的位置
+                int[] newPosition = piece.positionGetter();
+
+                // 在新位置放置棋子
+                board.movePiece(piece, newPosition);
+
+                System.out.println("Moved " + piece.nameGetter() + " " + direction + " by " + spaces + " spaces.");
             } else {
-                System.out.println("Invalid command. Fast pieces require a number of spaces to move.");
+                System.out.println("Invalid command. Fast flexible pieces require a number of spaces to move.");
             }
-        } else if (piece instanceof SlowPiece) {
-            // 如果是 SlowPiece，不需要步数
-            ((SlowPiece) piece).move(direction);
+        }
+        // 如果是 SlowFlexiblePiece
+        else if (piece instanceof SlowFlexiblePiece) {
+            board.removePiece(position);
+            ((SlowFlexiblePiece) piece).move(direction);
+            int[] newPosition = piece.positionGetter();
+            board.movePiece(piece, newPosition);
             System.out.println("Moved " + piece.nameGetter() + " " + direction + ".");
         } else {
             System.out.println("Invalid move command.");
         }
     }
-
-
-
 
 
     //        dealWithInput(board,scanner);

@@ -22,7 +22,7 @@ public class SlowPiece extends Piece {
             case "right":
                 if (positionGetter()[0]<=7){
                     int x = position[0];
-                    x = x +1;
+                    x = x + 1;
                     position[0] = x;
                     setterPosition(position);
                 }

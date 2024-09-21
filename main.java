@@ -1,8 +1,8 @@
 public class main {
     public static void main(String[] args){
         int[] position = {3,4};
-        SlowPiece slowPiece = new SlowPiece("someone","white",position);
-        System.out.println(slowPiece);
+//        SlowPiece slowPiece = new SlowPiece("someone","white",position);
+//        System.out.println(slowPiece);
 
         //slowPiece.move("left");
         //System.out.println(slowPiece);
@@ -32,7 +32,7 @@ public class main {
         System.out.println(fastFlexiblePiece);
 
         // 测试向上移动 3 步
-        fastFlexiblePiece.move("down", 3);
+        fastFlexiblePiece.move("down", 5);
         System.out.println("After moving down 3 steps fast:");
         System.out.println(fastFlexiblePiece);
     }

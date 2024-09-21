@@ -16,16 +16,16 @@ public class FastPiece extends Piece{
                     setterPosition(position);
                 }
                 else{
-                    System.out.println("out of range");
+                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
                 }
                 break;
             case "right":
-                if (position[0] + n <= 6){
+                if (position[0] + n <= 7){
                     position[0] = position[0] + n;
                     setterPosition(position);
                 }
                 else {
-                    System.out.println("out of range");
+                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
                 }
                 break;
         }

@@ -15,19 +15,19 @@ public class SlowPiece extends Piece {
                     setterPosition(position);
                 }
                 else {
-                    System.out.println("out of range");
+                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
                 }
                 break;
 
             case "right":
-                if (positionGetter()[0]<=6){
+                if (positionGetter()[0]<=7){
                     int x = position[0];
                     x = x +1;
                     position[0] = x;
                     setterPosition(position);
                 }
                 else {
-                    System.out.println("out of range");
+                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
                 }
                 break;
         }

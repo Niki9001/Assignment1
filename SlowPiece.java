@@ -37,7 +37,7 @@ public class SlowPiece extends Piece {
         return "Slow Piece: " + "\n" +
                 "name: " + nameGetter() + "\n" +
                 "color: " + colorGetter() + "\n" +
-                "position：" + positionGetter()[0] + positionGetter()[1] + ".";
+                "position：[" + positionGetter()[0] + "].[" + positionGetter()[1] + "]";
 
     }
 }

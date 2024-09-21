@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class GameDemo {
     public static void main(String[] args) {
         Board board = new Board(); // 初始化棋盘
-        Scanner scanner = new Scanner(System.in); // 创建 Scanner 对象用于获取用户输入
+        Scanner scanner = new Scanner(System.in);
 
         // 使用 while 循环持续处理用户输入
         while (true) {
@@ -26,14 +26,16 @@ public class GameDemo {
             } else if (input.equalsIgnoreCase("create")) {
                 // 处理创建棋子的逻辑
                 System.out.println("Creating a piece...");
+                handleCreate(board,input,scanner);
                 // 这里可以加入具体的逻辑来处理棋子创建
             } else if (input.equalsIgnoreCase("move")) {
                 // 处理移动棋子的逻辑
                 System.out.println("Moving a piece...");
+                handleMovement(board, input);
                 // 这里可以加入具体的逻辑来处理棋子移动
             } else if (input.equalsIgnoreCase("print")) {
                 // 打印当前棋盘的状态
-                board.boardShow(); // 假设 boardShow 是 Board 类中显示棋盘的方法
+                board.boardShow();
             } else {
                 // 如果用户输入的命令无效
                 System.out.println("Invalid command. Please try again.");
@@ -89,7 +91,7 @@ public class GameDemo {
         System.out.println("Created a " + name + " at position (" + x + "," + y + ")");
     }
 
-    public static void handleMoveCommand(Board board, String input) {
+    public static void handleMovement(Board board, String input) {
         String[] inputArray = input.split(" ");
         if (inputArray.length < 4) {
             System.out.println("Invalid command. ");

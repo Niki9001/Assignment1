@@ -9,6 +9,7 @@ public class Piece {
         this.name = name;
         this.color = color;
         this.position = position;
+
     }
 
 }

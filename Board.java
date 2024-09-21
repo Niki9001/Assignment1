@@ -6,7 +6,7 @@ public class Board {
         // 初始化每个位置为 EmptyPosition 占位符
         for (int i = 0; i <= 7; i = i + 1) {
             for (int j = 0; j <= 7; j = j + 1) {
-                board[i][j] = new EmptyPostion();  // 初始化为空位置
+                board[i][j] = null ;
             }
         }
     }
@@ -26,7 +26,7 @@ public class Board {
         int x = position[0];
         int y = position[1];
         if (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
-            board[x][y] = new EmptyPostion();  // 设置为空位置
+            board[x][y] = null;  // 设置为空位置
             System.out.println("Removed piece from position [" + x + "][" + y + "]");
         } else {
             System.out.println("Position out of range");
@@ -36,10 +36,10 @@ public class Board {
     public void boardShow() {
         for (int i = 0; i <= 7; i = i + 1) {
             for (int j = 0; j <= 7; j = j + 1) {
-                if (board[i][j] instanceof EmptyPostion) {
+                if (board[i][j] == null) {
                     System.out.print(" - ");
                 } else {
-                    System.out.print(" " + board[i][j].nameGetter() + " ");
+                    System.out.print(" " + board[i][j].nameGetter() + board[i][j].colorGetter() + " ");
                 }
             }
             System.out.println();

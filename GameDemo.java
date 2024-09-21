@@ -5,7 +5,7 @@ public class GameDemo {
         Board board = new Board(); // 初始化棋盘
         Scanner scanner = new Scanner(System.in);
 
-        // 使用 while 循环持续处理用户输入
+        // 使用 while 循环持续处理用户输入, 不用input类了
         while (true) {
             System.out.println("Enter a command (type help for details): ");
             String input = scanner.nextLine().trim().toLowerCase();
@@ -71,14 +71,9 @@ public class GameDemo {
     public static void handleMovement(Board board, String input) {
         String[] inputArray = input.split(" ");
 
-        // 调试输出，检查解析的输入是否正确
-        System.out.println("Input Array Length: " + inputArray.length);
-        for (int i = 0; i < inputArray.length; i++) {
-            System.out.println("inputArray[" + i + "] = " + inputArray[i]);
-        }
-
+        // 先检查命令是否至少包含3个参数 move x y
         if (inputArray.length < 3) {
-            System.out.println("Invalid commandxxxxxxx. Usage: move x y direction [spaces]");
+            System.out.println("Invalid command. Usage: move x y direction [spaces]");
             return;
         }
 
@@ -87,21 +82,17 @@ public class GameDemo {
         int col = Integer.parseInt(inputArray[2]);
         int[] position = {row, col};
 
-        // 调试输出，检查行和列的解析是否正确
-        System.out.println("Row: " + row + ", Col: " + col);
-
+        // 检查该位置是否有棋子
         Piece piece = board.getPieceAtPosition(position);
-
-        // 先检查该位置是否有棋子
         if (piece == null) {
             System.out.println("Error: No piece found at position (" + row + "," + col + ")");
-            return;
+            return;  // 提示错误后直接返回
         }
 
-        // 检查命令是否至少包含4个参数（包括方向）
+        // 如果有棋子，检查命令是否至少包含4个参数（包括方向）
         if (inputArray.length < 4) {
-            System.out.println("Invalid command. Usage: move x y direction [spaces]");
-            return;
+            System.out.println("Invalid command. Missing direction for move.");
+            return;  // 缺少方向时返回
         }
 
         // 提取移动方向
@@ -140,6 +131,8 @@ public class GameDemo {
             System.out.println("Invalid move command.");
         }
     }
+
+
 
     //        dealWithInput(board,scanner);
 

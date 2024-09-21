@@ -8,7 +8,7 @@ public class GameDemo {
         // 使用 while 循环持续处理用户输入
         while (true) {
             System.out.println("Enter a command (type help for details): ");
-            String input = scanner.nextLine().trim();
+            String input = scanner.nextLine().trim().toLowerCase();
 
             // 判断用户输入的命令
             if (input.equalsIgnoreCase("help")) {
@@ -23,12 +23,12 @@ public class GameDemo {
                 // 退出程序
                 System.out.println("Exiting the game...");
                 break;  // 跳出循环，结束程序
-            } else if (input.equalsIgnoreCase("create")) {
+            } else if (input.startsWith("create")) {
                 // 处理创建棋子的逻辑
                 System.out.println("Creating a piece...");
                 handleCreate(board,input,scanner);
                 // 这里可以加入具体的逻辑来处理棋子创建
-            } else if (input.equalsIgnoreCase("move")) {
+            } else if (input.startsWith("move")) {
                 // 处理移动棋子的逻辑
                 System.out.println("Moving a piece...");
                 handleMovement(board, input);
@@ -94,14 +94,14 @@ public class GameDemo {
     public static void handleMovement(Board board, String input) {
         String[] inputArray = input.split(" ");
         if (inputArray.length < 4) {
-            System.out.println("Invalid command. ");
+            System.out.println("Invalid command. Usage: move x y direction [spaces]");
             return;
         }
 
         // 提取棋子的位置和方向
         int x = Integer.parseInt(inputArray[1]);
         int y = Integer.parseInt(inputArray[2]);
-        String direction = inputArray[3];
+        String direction = inputArray[3].toLowerCase();
 
         // 获取棋子
         int[] position = {x, y};
@@ -111,16 +111,24 @@ public class GameDemo {
             return;
         }
 
-        // 检查棋子类型并移动
-        if (piece instanceof FastPiece && inputArray.length == 5) {
-            int spaces = Integer.parseInt(inputArray[4]);
-            ((FastPiece) piece).move(direction, spaces);
+        // 检查是否为 FastPiece，并处理 spaces 参数
+        if (piece instanceof FastPiece) {
+            if (inputArray.length == 5) {
+                int spaces = Integer.parseInt(inputArray[4]);
+                ((FastPiece) piece).move(direction, spaces);
+                System.out.println("Moved " + piece.nameGetter() + " " + direction + " by " + spaces + " spaces.");
+            } else {
+                System.out.println("Invalid command. Fast pieces require a number of spaces to move.");
+            }
         } else if (piece instanceof SlowPiece) {
+            // 如果是 SlowPiece，不需要 spaces
             ((SlowPiece) piece).move(direction);
+            System.out.println("Moved " + piece.nameGetter() + " " + direction + ".");
         } else {
             System.out.println("Invalid move command.");
         }
     }
+
 
 
 

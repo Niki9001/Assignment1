@@ -17,6 +17,10 @@ public class FastPiece extends Piece{
                 }
                 break;
             case "right":
+                if (position[0] + n <= 6){
+                    position[0] = position[0] + n;
+                    setterPosition(position);
+                }
                 break;
         }
 

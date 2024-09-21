@@ -5,6 +5,7 @@ public class SlowPiece extends Piece {
     public void move(String direction){
         // to adapt both upper and lower case
         direction = direction.toLowerCase();
+        int[] position = positionGetter();
         switch (direction){
             case "left":
                 if (positionGetter()[0] > 0){

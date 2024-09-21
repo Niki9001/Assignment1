@@ -41,4 +41,27 @@ public class GameDemo {
 
         scanner.close(); // 关闭 Scanner 资源，避免资源泄露
     }
+    //        dealWithInput(board,scanner);
+
+//        scanner.close();
+//    }
+//    public static void dealWithInput(Board board, Scanner scanner){
+//        System.out.println("Please input a command or input HELP for helping: ");
+//        String input = scanner.nextLine();
+//
+//        if(input.contains("create")){
+//
+//        } else if (input.contains("move")) {
+//
+//        } else if (input.contains("help")) {
+//
+//        } else if (input.contains("exit")) {
+//
+//        }
+//        else {
+//            System.out.println("Please try it again.");
+//        }
+//        dealWithInput(board,scanner);
+//    }
+}
 }

@@ -26,7 +26,11 @@ public class Piece {
         this.color = color;
         this.position = position;
     }
-
+    // To string
+    @Override
+    public String toString(){
+        return "Name: " + name + "." + "Color: " + color + "." + "Position:" + position[0] + " . " + position[1];
+    }
 
 
 }

@@ -11,19 +11,30 @@ public class main {
         //System.out.println(slowPiece);
 
 
-        FastPiece fastPiece = new FastPiece("someFast","black",position);
-        fastPiece.move("Left",3);
-        System.out.println(fastPiece);
+//        FastPiece fastPiece = new FastPiece("someFast","black",position);
+//        fastPiece.move("Left",3);
+//        System.out.println(fastPiece);
+//
+//
+//        SlowFlexiblePiece slowFlexiblePiece = new SlowFlexiblePiece("slowFlex", "White", position);
+//
+//        System.out.println(slowFlexiblePiece);
+//
+//        // 测试向上移动
+//        slowFlexiblePiece.move("down");
+//        System.out.println("After moving up:");
+//        System.out.println(slowFlexiblePiece);
 
 
-        SlowFlexiblePiece slowFlexiblePiece = new SlowFlexiblePiece("Knight", "White", position);
 
-        System.out.println(slowFlexiblePiece);
+        FastFlexiblePiece fastFlexiblePiece = new FastFlexiblePiece("fastFlex", "Black", position);
 
-        // 测试向上移动
-        slowFlexiblePiece.move("down");
-        System.out.println("After moving up:");
-        System.out.println(slowFlexiblePiece);
+        System.out.println(fastFlexiblePiece);
+
+        // 测试向上移动 3 步
+        fastFlexiblePiece.move("down", 3);
+        System.out.println("After moving down 3 steps fast:");
+        System.out.println(fastFlexiblePiece);
     }
 
 

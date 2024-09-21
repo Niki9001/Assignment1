@@ -27,8 +27,8 @@ public class Piece {
     public void setterColor(String color){
         this.color = color;
     }
-    public void setterPosition(int[] position){
-        this.position = position;
+    public void setterPosition(int[] newPosition){
+        this.position = newPosition;
     }
     // To string
     @Override

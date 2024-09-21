@@ -19,7 +19,7 @@ public class FastFlexiblePiece extends Piece{
 
             case "right":
                 if (position[0] + n <= 6){
-                    position[0] = position[0] + 1;
+                    position[0] = position[0] + n;
                     setterPosition(position);
                 }
                 else {
@@ -39,7 +39,7 @@ public class FastFlexiblePiece extends Piece{
 
             case "down":
                 if (position[1] + n <= 6){
-                    position[1] = position[1] + 1;
+                    position[1] = position[1] + n;
                     setterPosition(position);
                 }
                 else {

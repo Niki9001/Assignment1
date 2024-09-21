@@ -21,9 +21,13 @@ public class Piece {
         return position.clone(); // avoid of data lossing
     }
     // Setters
-    public void setters(String name, String color, int[] position){
+    public void setterName(String name){
         this.name = name;
+    }
+    public void setterColor(String color){
         this.color = color;
+    }
+    public void setterPosition(int[] position){
         this.position = position;
     }
     // To string

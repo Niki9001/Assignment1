@@ -70,23 +70,42 @@ public class GameDemo {
 
     public static void handleMovement(Board board, String input) {
         String[] inputArray = input.split(" ");
+
+        // 调试输出，检查解析的输入是否正确
+        System.out.println("Input Array Length: " + inputArray.length);
+        for (int i = 0; i < inputArray.length; i++) {
+            System.out.println("inputArray[" + i + "] = " + inputArray[i]);
+        }
+
+        if (inputArray.length < 3) {
+            System.out.println("Invalid commandxxxxxxx. Usage: move x y direction [spaces]");
+            return;
+        }
+
+        // 提取棋子的位置
+        int row = Integer.parseInt(inputArray[1]);
+        int col = Integer.parseInt(inputArray[2]);
+        int[] position = {row, col};
+
+        // 调试输出，检查行和列的解析是否正确
+        System.out.println("Row: " + row + ", Col: " + col);
+
+        Piece piece = board.getPieceAtPosition(position);
+
+        // 先检查该位置是否有棋子
+        if (piece == null) {
+            System.out.println("Error: No piece found at position (" + row + "," + col + ")");
+            return;
+        }
+
+        // 检查命令是否至少包含4个参数（包括方向）
         if (inputArray.length < 4) {
             System.out.println("Invalid command. Usage: move x y direction [spaces]");
             return;
         }
 
-        // 提取棋子的位置和方向
-        int row = Integer.parseInt(inputArray[1]);
-        int col = Integer.parseInt(inputArray[2]);
+        // 提取移动方向
         String direction = inputArray[3].toLowerCase();
-
-        int[] position = {row, col};  // 当前棋子的坐标
-        Piece piece = board.getPieceAtPosition(position);
-
-        if (piece == null) {
-            System.out.println("No piece found at position (" + row + "," + col + ")");
-            return;
-        }
 
         // 如果是 FastFlexiblePiece
         if (piece instanceof FastFlexiblePiece) {
@@ -121,7 +140,6 @@ public class GameDemo {
             System.out.println("Invalid move command.");
         }
     }
-
 
     //        dealWithInput(board,scanner);
 

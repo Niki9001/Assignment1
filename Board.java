@@ -1,7 +1,6 @@
 public class Board {
     Piece[][] board;
 
-    // 构造函数，初始化棋盘，所有位置都设置为 EmptyPosition
     public Board() {
         board = new Piece[8][8];
         // 初始化每个位置为 EmptyPosition 占位符
@@ -12,7 +11,6 @@ public class Board {
         }
     }
 
-    // 移动棋子到指定位置
     public void movePiece(Piece piece, int[] position) {
         int x = position[0];
         int y = position[1];
@@ -24,7 +22,6 @@ public class Board {
         }
     }
 
-    // 从指定位置移除棋子，将该位置设置为 EmptyPosition
     public void removePiece(int[] position) {
         int x = position[0];
         int y = position[1];
@@ -36,7 +33,6 @@ public class Board {
         }
     }
 
-    // 打印当前棋盘状态
     public void boardShow() {
         for (int i = 0; i <= 7; i = i + 1) {
             for (int j = 0; j <= 7; j = j + 1) {
@@ -49,4 +45,16 @@ public class Board {
             System.out.println();
         }
     }
+
+    public Piece getPieceAtPosition(int[] position) {
+        int x = position[0];
+        int y = position[1];
+        if (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+            return board[x][y];
+        } else {
+            System.out.println("Position out of range");
+            return null;
+        }
+    }
+
 }

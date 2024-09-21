@@ -37,9 +37,9 @@ public class Board {
         for (int i = 0; i <= 7; i = i + 1) {
             for (int j = 0; j <= 7; j = j + 1) {
                 if (board[i][j] instanceof EmptyPostion) {
-                    System.out.print("[ ]");  // 如果是空棋子，显示空白
+                    System.out.print(" - ");
                 } else {
-                    System.out.print("[" + board[i][j].nameGetter().charAt(0) + "]");  // 显示棋子的首字母
+                    System.out.print(" " + board[i][j].nameGetter() + " ");
                 }
             }
             System.out.println();

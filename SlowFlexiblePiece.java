@@ -10,25 +10,7 @@ public class SlowFlexiblePiece extends Piece{
 
         switch (direction){
             case "left":
-                if (position[0] > 0){
-                    position[0] = position[0] - 1;
-                    setterPosition(position);
-                }
-                else {
-                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
-                }
-                break;
-            case "right":
-                if (position[0] <= 7){
-                    position[0] = position[0] + 1;
-                    setterPosition(position);
-                }
-                else {
-                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
-                }
-                break;
-            case "up":
-                if (position[1] > 0) {
+                if (position[1] > 0){
                     position[1] = position[1] - 1;
                     setterPosition(position);
                 }
@@ -36,9 +18,27 @@ public class SlowFlexiblePiece extends Piece{
                     System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
                 }
                 break;
-            case "down":
-                if (position[1] <= 7) {
+            case "right":
+                if (position[1] <= 7){
                     position[1] = position[1] + 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
+                }
+                break;
+            case "up":
+                if (position[0] > 0) {
+                    position[0] = position[0] - 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("IT IS OUT OF RANGE, THE POSITION WILL NOT BE CHANGED!");
+                }
+                break;
+            case "down":
+                if (position[0] <= 7) {
+                    position[0] = position[0] + 1;
                     setterPosition(position);
                 }
                 else {

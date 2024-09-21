@@ -18,7 +18,7 @@ public class GameDemo {
                         + "help: Displays help.\n"
                         + "exit: Exits the program.");
             } else if (input.equalsIgnoreCase("exit")) {
-                System.out.println("Exiting the game...");
+                System.out.println("Done");
                 break;
             } else if (input.startsWith("create")) {
                 handleCreate(board, input, scanner);

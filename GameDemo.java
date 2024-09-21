@@ -89,6 +89,39 @@ public class GameDemo {
         System.out.println("Created a " + name + " at position (" + x + "," + y + ")");
     }
 
+    public static void handleMoveCommand(Board board, String input) {
+        String[] inputArray = input.split(" ");
+        if (inputArray.length < 4) {
+            System.out.println("Invalid command. ");
+            return;
+        }
+
+        // 提取棋子的位置和方向
+        int x = Integer.parseInt(inputArray[1]);
+        int y = Integer.parseInt(inputArray[2]);
+        String direction = inputArray[3];
+
+        // 获取棋子
+        int[] position = {x, y};
+        Piece piece = board.getPieceAtPosition(position);
+        if (piece == null) {
+            System.out.println("No piece found at position (" + x + "," + y + ")");
+            return;
+        }
+
+        // 检查棋子类型并移动
+        if (piece instanceof FastPiece && inputArray.length == 5) {
+            int spaces = Integer.parseInt(inputArray[4]);
+            ((FastPiece) piece).move(direction, spaces);
+        } else if (piece instanceof SlowPiece) {
+            ((SlowPiece) piece).move(direction);
+        } else {
+            System.out.println("Invalid move command.");
+        }
+    }
+
+
+
     //        dealWithInput(board,scanner);
 
 //        scanner.close();

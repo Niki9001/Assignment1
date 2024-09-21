@@ -18,7 +18,15 @@ public class Piece {
         return color;
     }
     public int[] positionGetter(){
-        return position;
+        return position.clone(); // avoid of data lossing
     }
+    // Setters
+    public void setters(String name, String color, int[] position){
+        this.name = name;
+        this.color = color;
+        this.position = position;
+    }
+
+
 
 }

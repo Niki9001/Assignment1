@@ -9,5 +9,11 @@ public class main {
 
         slowPiece.move("right");
         System.out.println(slowPiece);
+
+        int[] position = {5,5};
+
+        FastPiece fastPiece = new FastPiece("someFast","black",position);
+        System.out.println(fastPiece);
+        fastPiece.move("Left");
     }
 }

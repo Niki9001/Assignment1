@@ -11,6 +11,10 @@ public class FastPiece extends Piece{
 
         switch (direction){
             case "left":
+                if (position[0] - n >= 0){
+                    position[0] = position[0] - n;
+                    setterPosition(position);
+                }
                 break;
             case "right":
                 break;

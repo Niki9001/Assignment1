@@ -39,7 +39,7 @@ public class Board {
                 if (board[i][j] == null) {
                     System.out.print(" - ");
                 } else {
-                    System.out.print(" " + board[i][j].nameGetter() + board[i][j].colorGetter() + " ");
+                    System.out.print(" " + board[i][j].nameGetter() + board[i][j].colorGetter() + "FF ");
                 }
             }
             System.out.println();

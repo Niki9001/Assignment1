@@ -8,12 +8,43 @@ public class FastFlexiblePiece extends Piece{
 
         switch (direction){
             case "left":
+                if (position[0] - n >= 0){
+                    position[0] = position[0] - n;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
+
             case "right":
+                if (position[0] + n <= 6){
+                    position[0] = position[0] + 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
+
             case "up":
+                if (position[1] - n >= 0){
+                    position[1] = position[1] - n;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
+
             case "down":
+                if (position[1] + n <= 6){
+                    position[1] = position[1] + 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
         }
     }

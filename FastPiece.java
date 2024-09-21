@@ -4,4 +4,18 @@ public class FastPiece extends Piece{
         super(name,color,position);
     }
 
+    public void move(String direction, int n){
+        // set everything to lower case
+        direction = direction.toLowerCase();
+        int[] position = positionGetter();
+
+        switch (direction){
+            case "left":
+                break;
+            case "right":
+                break;
+        }
+
+    }
+
 }

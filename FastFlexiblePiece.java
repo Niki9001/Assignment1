@@ -47,6 +47,7 @@ public class FastFlexiblePiece extends Piece{
                 }
                 break;
         }
+        setterPosition(position);
     }
     @Override
     public String toString() {
@@ -56,4 +57,5 @@ public class FastFlexiblePiece extends Piece{
                 "Color: " + colorGetter() + "\n" +
                 "Position: [" + position[0] + "], [" + position[1] + "]";
     }
+
 }

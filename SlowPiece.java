@@ -1,4 +1,7 @@
 public class SlowPiece extends Piece {
+    public SlowPiece(String name, String color, int[] position){
+        super(name,color,position);
+    }
     public void move(String direction){
         // to adapt both upper and lower case
         direction = direction.toLowerCase();

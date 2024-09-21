@@ -10,12 +10,40 @@ public class SlowFlexiblePiece extends Piece{
 
         switch (direction){
             case "left":
+                if (position[0] > 0){
+                    position[0] = position[0] - 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
             case "right":
+                if (position[0] <= 6){
+                    position[0] = position[0] + 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
             case "up":
+                if (position[1] > 0) {
+                    position[1] = position[1] - 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
             case "down":
+                if (position[1] <= 6) {
+                    position[1] = position[1] + 1;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
+                }
                 break;
         }
     }

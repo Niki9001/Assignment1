@@ -15,5 +15,16 @@ public class main {
         fastPiece.move("Left",3);
         System.out.println(fastPiece);
 
+
+        SlowFlexiblePiece slowFlexiblePiece = new SlowFlexiblePiece("Knight", "White", position);
+
+        System.out.println(slowFlexiblePiece);
+
+        // 测试向上移动
+        slowFlexiblePiece.move("down");
+        System.out.println("After moving up:");
+        System.out.println(slowFlexiblePiece);
     }
+
+
 }

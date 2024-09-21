@@ -17,7 +17,13 @@ public class SlowPiece extends Piece {
 
             case "right":
                 if (positionGetter()[0]<=6){
-
+                    int x = position[0];
+                    x = x +1;
+                    position[0] = x;
+                    setterPosition(position);
+                }
+                else {
+                    System.out.println("out of range");
                 }
                 break;
 

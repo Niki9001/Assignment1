@@ -33,11 +33,11 @@ public class FastPiece extends Piece{
     }
     @Override
     public String toString() {
-        int[] position = positionGetter();  // 获取当前位置信息
+        int[] position = positionGetter();
         return "Slow Piece: \n" +
                 "Name: " + nameGetter() + "\n" +
                 "Color: " + colorGetter() + "\n" +
-                "Position: [" + position[0] + "], [" + position[1] + "]";  // 格式化坐标输出
+                "Position: [" + position[0] + "], [" + position[1] + "]";
     }
 
 }

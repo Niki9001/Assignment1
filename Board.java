@@ -19,10 +19,11 @@ public class Board {
         int x = position[0];
         int y = position[1];
         if (x >= 0 && x <= 7 && y >= 0 && y <= 7){
-
-
+            board[x][y] = new EmptyPostion();
+            System.out.println("Removed piece from position [" + x + "][" + y + "]");
         }
         else {
+            System.out.println("out of range");
 
         }
     }

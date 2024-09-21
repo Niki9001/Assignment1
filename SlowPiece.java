@@ -29,8 +29,14 @@ public class SlowPiece extends Piece {
                     System.out.println("out of range");
                 }
                 break;
-
         }
+    }
+    @Override
+    public String toString(){
+        return "Slow Piece: " + "\n" +
+                "name: " + nameGetter() + "\n" +
+                "color: " + colorGetter() + "\n" +
+                "position：" + positionGetter()[0] + positionGetter()[1] + ".";
 
     }
 }

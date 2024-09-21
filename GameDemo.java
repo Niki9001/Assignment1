@@ -39,7 +39,7 @@ public class GameDemo {
             }
         }
 
-        scanner.close(); // 关闭 Scanner 资源，避免资源泄露
+        scanner.close();
     }
     //        dealWithInput(board,scanner);
 
@@ -63,5 +63,5 @@ public class GameDemo {
 //        }
 //        dealWithInput(board,scanner);
 //    }
-}
+
 }

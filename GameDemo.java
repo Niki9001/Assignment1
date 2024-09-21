@@ -7,17 +7,18 @@ public class GameDemo {
 
         // 使用 while 循环持续处理用户输入
         while (true) {
-            System.out.println("Please input a command or input HELP for help: ");
+            System.out.println("Enter a command (type help for details): ");
             String input = scanner.nextLine().trim(); // 获取输入并去掉空格
 
             // 判断用户输入的命令
             if (input.equalsIgnoreCase("help")) {
                 // 输出帮助信息
-                System.out.println("Available commands: \n"
-                        + "create [x] [y] [type] [flexible] - Create a piece at the specified location\n"
-                        + "move [x] [y] [direction] [spaces] - Move a piece from the specified location\n"
-                        + "print - Display the board\n"
-                        + "exit - Exit the game");
+                System.out.println("Possible commands as follow: \n"
+                        + "create location [fast][flexible]: Creates a new piece.\n"
+                        + "move location direction [spaces]: Moves a piece.\n"
+                        + "print: Displays the board.\n"
+                        + "help: Displays help.\n"
+                        + "Exits the program.");
             } else if (input.equalsIgnoreCase("exit")) {
                 // 退出程序
                 System.out.println("Exiting the game...");

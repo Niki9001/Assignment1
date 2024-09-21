@@ -88,7 +88,6 @@ public class GameDemo {
 
         // 将棋子放置到棋盘上
         board.movePiece(piece, new int[]{x, y});
-        System.out.println("Created a " + name + " at position (" + x + "," + y + ")");
     }
 
     public static void handleMovement(Board board, String input) {
@@ -114,20 +113,25 @@ public class GameDemo {
         // 检查是否为 FastPiece，并处理 spaces 参数
         if (piece instanceof FastPiece) {
             if (inputArray.length == 5) {
-                int spaces = Integer.parseInt(inputArray[4]);
-                ((FastPiece) piece).move(direction, spaces);
-                System.out.println("Moved " + piece.nameGetter() + " " + direction + " by " + spaces + " spaces.");
+                try {
+                    int spaces = Integer.parseInt(inputArray[4]);
+                    ((FastPiece) piece).move(direction, spaces);
+                    System.out.println("Moved " + piece.nameGetter() + " " + direction + " by " + spaces + " spaces.");
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid spaces value. It should be a number.");
+                }
             } else {
                 System.out.println("Invalid command. Fast pieces require a number of spaces to move.");
             }
         } else if (piece instanceof SlowPiece) {
-            // 如果是 SlowPiece，不需要 spaces
+            // 如果是 SlowPiece，不需要步数
             ((SlowPiece) piece).move(direction);
             System.out.println("Moved " + piece.nameGetter() + " " + direction + ".");
         } else {
             System.out.println("Invalid move command.");
         }
     }
+
 
 
 

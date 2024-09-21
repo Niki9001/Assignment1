@@ -8,7 +8,7 @@ public class GameDemo {
         // 使用 while 循环持续处理用户输入
         while (true) {
             System.out.println("Enter a command (type help for details): ");
-            String input = scanner.nextLine().trim(); // 获取输入并去掉空格
+            String input = scanner.nextLine().trim();
 
             // 判断用户输入的命令
             if (input.equalsIgnoreCase("help")) {
@@ -41,6 +41,13 @@ public class GameDemo {
         }
 
         scanner.close();
+    }
+    public static void handleCreate(Board board, String input,Scanner scanner){
+        String inputArray[] = input.split(" ");
+        if (inputArray.length < 3){
+            System.out.println("Invalid command");
+            return;
+        }
     }
     //        dealWithInput(board,scanner);
 

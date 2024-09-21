@@ -29,7 +29,7 @@ public class Piece {
     // To string
     @Override
     public String toString(){
-        return "Name: " + name + "." + "Color: " + color + "." + "Position:" + position[0] + " . " + position[1];
+        return "Name: " + name + ". \n" + "Color: " + color + ". \n" + "Position:" + position[0] + " . " + position[1];
     }
 
 
